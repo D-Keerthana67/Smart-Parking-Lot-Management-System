@@ -2,8 +2,8 @@ package com.smartparking.pricing;
 
 import com.smartparking.model.VehicleType;
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.math.RoundingMode;
+import java.time.Duration;
 
 public class StandardPricingStrategy implements PricingStrategy {
     private static final BigDecimal BIKE_RATE = new BigDecimal("10.00");
@@ -12,8 +12,8 @@ public class StandardPricingStrategy implements PricingStrategy {
 
     @Override
     public BigDecimal calculateFee(VehicleType type, Duration duration) {
-        long minutes = Math.max(1, duration.toMinutes());
-        long billableHours = Math.max(1, (minutes + 59) / 60);
+        long seconds = Math.max(1, duration.getSeconds());
+        long billableHours = Math.max(1, (seconds + 3599) / 3600);
         BigDecimal rate = switch (type) {
             case BIKE -> BIKE_RATE;
             case CAR -> CAR_RATE;
