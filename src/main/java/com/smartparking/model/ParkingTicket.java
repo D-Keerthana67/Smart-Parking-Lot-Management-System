@@ -11,7 +11,7 @@ public class ParkingTicket {
     private LocalDateTime exitTime;
 
     public ParkingTicket(Vehicle vehicle, int slotNumber) {
-        this.ticketId = UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        this.ticketId = UUID.randomUUID().toString().toUpperCase();
         this.vehicle = vehicle;
         this.slotNumber = slotNumber;
         this.entryTime = LocalDateTime.now();
